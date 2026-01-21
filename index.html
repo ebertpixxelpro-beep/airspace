@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Airspace - Platform manajemen properti global #1. Temukan tempat tinggal impian Anda dengan layanan terbaik dan properti eksklusif.">
+    <meta name="keywords" content="properti, rumah, apartemen, real estate, airspace, beli rumah, sewa apartemen">
+    <meta name="author" content="Airspace Developer">
+    <meta name="theme-color" content="#E6553B">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32x32/E6553B/ffffff?text=A">
+    <link rel="apple-touch-icon" href="https://via.placeholder.com/180x180/E6553B/ffffff?text=A">
+
+    <title>Airspace | Find A Place You'll Love To Live</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CORE VARIABLES & RESET --- */
+        :root {
+            --primary-color: #E6553B; /* Warna Orange Airspace */
+            --secondary-color: #1A1A1A;
+            --text-dark: #111111;
+            --text-light: #666666;
+            --bg-light: #F9F9F9;
+            --white: #ffffff;
+            --font-heading: 'Jost', sans-serif; /* Mirip Agrandir */
+            --font-body: 'Inter', sans-serif; /* Mirip Suisse Int'l */
+            --border-radius-lg: 16px;
+            --border-radius-sm: 8px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        a { text-decoration: none; transition: 0.3s; }
+        
+        /* --- UTILITIES --- */
+        .text-primary-custom { color: var(--primary-color) !important; }
+        .bg-primary-custom { background-color: var(--primary-color) !important; }
+        .section-padding { padding: 80px 0; }
+        .img-cover { object-fit: cover; width: 100%; height: 100%; }
+
+        /* --- BUTTONS --- */
+        .btn-airspace {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: 500;
+            border: 2px solid var(--secondary-color);
+        }
+        .btn-airspace:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
+        }
+        .btn-airspace-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        .btn-airspace-primary:hover {
+            background-color: #c9462e;
+            color: white;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            padding: 20px 0;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        .navbar-brand {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: white !important;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+            margin: 0 10px;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+        }
+        .btn-nav-contact {
+            background: black;
+            color: white;
+            border-radius: 30px;
+            padding: 8px 24px;
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            background-color: var(--primary-color); /* Match header */
+            color: white;
+            padding-top: 40px;
+            padding-bottom: 100px; /* Space for floating search */
+            position: relative;
+        }
+        .hero-heading {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .hero-sub {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 400px;
+        }
+        .hero-img-container {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            height: 500px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .expert-card {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: var(--border-radius-sm);
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .expert-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* --- SEARCH BAR (Floating) --- */
+        .search-wrapper {
+            margin-top: -60px; /* Overlap effect */
+            z-index: 10;
+            position: relative;
+            padding: 0 15px;
+        }
+        .search-container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .search-item {
+            flex: 1;
+            min-width: 150px;
+        }
+        .search-label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+        .search-input {
+            border: none;
+            width: 100%;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .search-input:focus { outline: none; }
+        .search-btn {
+            background: black;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+        .search-btn:hover { background: var(--primary-color); }
+
+        /* --- SECTIONS COMMON --- */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .section-subtitle {
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        /* --- PRODUCTS / PROPERTY --- */
+        .property-card {
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            margin-bottom: 30px;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .property-card:hover { transform: translateY(-5px); }
+        .property-img { height: 350px; width: 100%; object-fit: cover; }
+
+        /* --- ABOUT & STATS --- */
+        .stats-box h3 { font-size: 2rem; margin-bottom: 0; }
+        .stats-box p { font-size: 0.9rem; color: var(--text-light); }
+        .about-collage img { border-radius: var(--border-radius-sm); }
+
+        /* --- CTA BANNER --- */
+        #cta-main {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        #cta-main h2 { color: white; max-width: 800px; margin: 0 auto 30px; font-size: 3rem; }
+
+        /* --- SERVICES --- */
+        .service-card {
+            padding: 40px;
+            background: var(--bg-light);
+            border-radius: var(--border-radius-lg);
+            height: 100%;
+            transition: 0.3s;
+        }
+        .service-card:hover { background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .service-icon { font-size: 2rem; color: var(--primary-color); margin-bottom: 20px; }
+
+        /* --- FAQ --- */
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(230, 85, 59, 0.1);
+            color: var(--primary-color);
+        }
+        .accordion-button:focus { box-shadow: none; border-color: rgba(230, 85, 59, 0.1); }
+
+        /* --- FOOTER --- */
+        footer {
+            background: black;
+            color: white;
+            padding: 80px 0 40px;
+        }
+        footer h5 { color: white; margin-bottom: 20px; font-size: 1.2rem; }
+        footer a { color: #999; display: block; margin-bottom: 10px; font-size: 0.95rem; }
+        footer a:hover { color: var(--primary-color); padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid #333; padding-top: 30px; margin-top: 50px; text-align: center; color: #666; font-size: 0.85rem; }
+
+        /* --- FLOATING ACTIONS --- */
+        .fab-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+        .fab-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .fab-btn:hover { transform: scale(1.1); }
+        .fab-wa { background-color: #25D366; }
+        .fab-top { background-color: var(--secondary-color); display: none; } /* Hidden by default */
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 991px) {
+            .hero-heading { font-size: 2.5rem; }
+            .hero-img-container { height: 350px; margin-top: 30px; }
+            .search-container { flex-direction: column; align-items: stretch; }
+            .search-btn { width: 100%; border-radius: 10px; margin-top: 10px; }
+            .border-end { border-right: none !important; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
+            #cta-main h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fa-solid fa-circle-notch"></i> AIRSPACE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Category</a></li>
+                </ul>
+            </div>
+            <div class="d-none d-lg-block">
+                <a href="#contact" class="btn-nav-contact">Contact <i class="fa-regular fa-envelope ms-2"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-heading">Find A Place <br>You'll Love <br>To Live</h1>
+                    <p class="hero-sub">We invite you to check out our selection of houses. We hope you will find something for yourself.</p>
+                    
+                    <div class="expert-card">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=100&auto=format&fit=crop" alt="Expert Agent" class="expert-img">
+                        <div>
+                            <p class="m-0 fw-bold small">Our Experts are</p>
+                            <p class="m-0 fw-bold small">ready to help you</p>
+                            <a href="#" class="text-primary-custom fw-bold small text-decoration-underline">Call Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-img-container">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000&auto=format&fit=crop" alt="Modern Red Apartment Building" class="img-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="search-wrapper">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-item border-end px-2">
+                    <span class="search-label"><i class="fa-solid fa-location-dot me-2 text-muted"></i> Location</span>
+                    <input type="text" class="search-input" placeholder="Enter Your City Name">
+                </div>
+                <div class="search-item border-end px-2">
+                    <span class="search-label"><i class="fa-solid fa-house me-2 text-muted"></i> Type</span>
+                    <select class="search-input bg-white border-0 p-0" aria-label="Property Type">
+                        <option selected>Urban & Minimalist</option>
+                        <option value="1">Luxury Villa</option>
+                        <option value="2">Apartment</option>
+                    </select>
+                </div>
+                <div class="search-item px-2">
+                    <span class="search-label"><i class="fa-solid fa-dollar-sign me-2 text-muted"></i> Range</span>
+                    <input type="text" class="search-input" placeholder="$14,000 - $20,000">
+                </div>
+                <a href="#products" class="search-btn" aria-label="Search Properties">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <h2 class="text-uppercase mb-4 display-5">Get To Know<br>Us More</h2>
+                    <p class="text-muted mb-4">
+                        For over 10 years we have been helping you find the best luxury Property. Our company dedicated to innovating the luxury real estate industry, offers absolutely new experiences through a global network.
+                    </p>
+                    <div class="row mt-5">
+                        <div class="col-4 stats-box">
+                            <h3>10+</h3>
+                            <p>Years of<br>Experience</p>
+                        </div>
+                        <div class="col-4 stats-box">
+                            <h3>456+</h3>
+                            <p>Rented<br>Apartments</p>
+                        </div>
+                        <div class="col-4 stats-box">
+                            <h3>1000+</h3>
+                            <p>Project<br>Completed</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-airspace btn-nav-contact mt-4">Explore More</a>
+                </div>
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="row g-3 about-collage">
+                        <div class="col-6">
+                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=500&auto=format&fit=crop" class="img-fluid mb-3 w-100" alt="Interior">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=500&auto=format&fit=crop" class="img-fluid w-100" alt="House Exterior">
+                        </div>
+                        <div class="col-6 pt-5">
+                            <img src="https://images.unsplash.com/photo-1616137466211-f939a420be84?q=80&w=500&auto=format&fit=crop" class="img-fluid mb-3 w-100" alt="Orange Furniture">
+                            <div class="bg-dark text-white p-4 rounded text-center">
+                                <h4 class="h1 mb-0">4.9</h4>
+                                <small>Customer Rating</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Comprehensive real estate solutions for everyone</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-hand-holding-dollar service-icon"></i>
+                        <h4>Buy a Home</h4>
+                        <p class="text-muted">Find your place with an immersive photo experience and the most listings, including things you won't find anywhere else.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-house-key service-icon"></i>
+                        <h4>Rent a Home</h4>
+                        <p class="text-muted">We’re creating a seamless online experience – from shopping on the largest rental network, to applying, to paying rent.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <i class="fa-solid fa-shop service-icon"></i>
+                        <h4>Sell a Home</h4>
+                        <p class="text-muted">No matter what path you take to sell your home, we can help you navigate a successful sale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta-main">
+        <div class="container">
+            <h2 class="text-uppercase">We are the #1 Ranked Global Property Management Platform</h2>
+            <p class="mb-4 text-white-50">We invite you to check out our selection of houses. We hope you will find something for yourself.</p>
+            <a href="#contact" class="btn btn-light rounded-pill px-5 py-3 fw-bold">Contact Us</a>
+        </div>
+    </section>
+
+    <section id="products" class="section-padding">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-5">
+                <div>
+                    <h2 class="section-title text-uppercase">Our Property</h2>
+                    <p class="m-0 text-muted">This week exclusive homes from Partners.</p>
+                </div>
+                <a href="#" class="btn btn-outline-dark rounded-pill px-4">See All <i class="fa-solid fa-arrow-right ms-2"></i></a>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=500&auto=format&fit=crop" class="property-img" alt="Luxury House">
+                    </div>
+                    <h4>Classic Victorian</h4>
+                    <p class="text-muted">$450,000 • London, UK</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=500&auto=format&fit=crop" class="property-img" alt="Modern Apartment">
+                    </div>
+                    <h4>Orange Sky Apartments</h4>
+                    <p class="text-muted">$320,000 • Berlin, Germany</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=500&auto=format&fit=crop" class="property-img" alt="Minimalist Home">
+                    </div>
+                    <h4>Red Block Complex</h4>
+                    <p class="text-muted">$510,000 • Madrid, Spain</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">What People Say</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <p class="fs-4 fst-italic mb-4">"Airspace helped me find the perfect studio apartment in just 2 days. The vivid colors and modern design of their platform made the experience enjoyable!"</p>
+                                <h5>Sarah Jenkins</h5>
+                                <small class="text-muted">Graphic Designer</small>
+                            </div>
+                            <div class="carousel-item">
+                                <p class="fs-4 fst-italic mb-4">"Professional, fast, and reliable. The #1 property platform for a reason."</p>
+                                <h5>Michael Ross</h5>
+                                <small class="text-muted">Entrepreneur</small>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <h2>Frequently Asked Questions</h2>
+                    <p class="text-muted">Everything you need to know about our services.</p>
+                </div>
+                <div class="col-lg-7">
+                    <div class="accordion" id="accordionFaq">
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    How do I schedule a visit?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    Simply browse our properties, select one you like, and click "Call Now" or use the contact form to schedule a viewing with our agents.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    Are there any hidden fees?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    No, transparency is our core value. All fees will be explained in detail before you sign any contract.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="mb-5">Latest News</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card border-0 h-100 bg-transparent">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=500&auto=format&fit=crop" class="card-img-top rounded-4" alt="News 1">
+                        <div class="card-body px-0">
+                            <small class="text-primary-custom fw-bold">TRENDS</small>
+                            <h4 class="card-title mt-2">The Future of Urban Living</h4>
+                            <a href="#" class="text-dark fw-bold text-decoration-underline">Read Article</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card border-0 h-100 bg-transparent">
+                        <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=500&auto=format&fit=crop" class="card-img-top rounded-4" alt="News 2">
+                        <div class="card-body px-0">
+                            <small class="text-primary-custom fw-bold">TIPS</small>
+                            <h4 class="card-title mt-2">5 Tips for First-Time Home Buyers</h4>
+                            <a href="#" class="text-dark fw-bold text-decoration-underline">Read Article</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="row bg-dark text-white rounded-5 overflow-hidden">
+                <div class="col-lg-6 p-5 d-flex flex-column justify-content-center">
+                    <h2 class="text-white mb-4">Find All the information to connect with us.</h2>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><strong class="d-block text-white-50 small text-uppercase">Agent</strong> See who's the best agent right now.</li>
+                        <li class="mb-3"><strong class="d-block text-white-50 small text-uppercase">Services</strong> Know about us which services we provide.</li>
+                        <li class="mb-3"><strong class="d-block text-white-50 small text-uppercase">Offers</strong> Find The Best Offer here and Book.</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 p-0">
+                    <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=500&auto=format&fit=crop" class="img-cover" alt="Building Low Angle">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <a class="navbar-brand mb-3" href="#">
+                        <i class="fa-solid fa-circle-notch"></i> AIRSPACE
+                    </a>
+                    <p class="text-secondary small">Our company dedicated to innovating the luxury real estate industry offers absolutely new experiences through a global network.</p>
+                </div>
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5>Home</h5>
+                    <a href="#">About Us</a>
+                    <a href="#">Properties</a>
+                    <a href="#">Agents</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5>Support</h5>
+                    <a href="#">FAQ</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Newsletter</h5>
+                    <p class="text-secondary small">Subscribe to get the latest property updates.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="Email Address">
+                        <button class="btn btn-light" type="button">Sub</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Airspace Real Estate. All Rights Reserved. Designed based on request.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fab-container">
+        <div class="fab-btn fab-top" id="backToTop" onclick="scrollToTop()">
+            <i class="fa-solid fa-arrow-up"></i>
+        </div>
+        <a href="https://wa.me/6281234567890" target="_blank" class="fab-btn fab-wa" aria-label="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Floating Button Logic
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTopBtn.style.display = "flex";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // Add smooth scrolling to all nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            addEventListener('click', function (e) {
+                // Check if it's not a dropdown or standard link
+                if(this.getAttribute('href') !== "#") {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
