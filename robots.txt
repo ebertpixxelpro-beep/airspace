@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Blokir akses ke folder sistem atau API (jika ada)
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /dashboard/
+
+# Blokir parameter pencarian agar tidak terjadi duplikat konten
+Disallow: /*?query=
+Disallow: /*?search=
+
+# Lokasi Sitemap
+Sitemap: https://airspace-kappa.vercel.app/sitemap.xml

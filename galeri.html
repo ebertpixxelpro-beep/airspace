@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Galeri Properti & Desain Interior Eksklusif | Airspace Portfolio</title>
+    <meta name="description" content="Jelajahi galeri properti Airspace. Koleksi foto desain interior minimalis, hunian mewah, dan arsitektur modern untuk inspirasi rumah impian Anda.">
+    <meta name="keywords" content="galeri interior, desain rumah minimalis, portofolio properti, airspace gallery, arsitektur modern">
+    <meta name="author" content="Airspace Developer">
+    <meta name="theme-color" content="#E6553B">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Galeri Properti & Desain Interior Eksklusif | Airspace">
+    <meta property="og:description" content="Temukan inspirasi hunian dari koleksi terbaik Airspace.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32x32/E6553B/ffffff?text=A">
+    <link rel="apple-touch-icon" href="https://via.placeholder.com/180x180/E6553B/ffffff?text=A">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "Airspace Property Portfolio",
+      "description": "Koleksi foto properti dan desain interior terbaik dari Airspace.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Airspace Real Estate",
+        "sameAs": "https://airspace.com"
+      }
+    }
+    </script>
+
+    <style>
+        /* --- CORE VARIABLES (MATCHING INDEX) --- */
+        :root {
+            --primary-color: #E6553B;
+            --secondary-color: #1A1A1A;
+            --text-dark: #111111;
+            --text-light: #666666;
+            --bg-light: #F9F9F9;
+            --white: #ffffff;
+            --font-heading: 'Jost', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --border-radius-lg: 16px;
+            --border-radius-sm: 8px;
+        }
+
+        body { font-family: var(--font-body); color: var(--text-dark); overflow-x: hidden; line-height: 1.6; }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; color: var(--text-dark); }
+        a { text-decoration: none; transition: 0.3s; }
+        .text-primary-custom { color: var(--primary-color) !important; }
+        .bg-primary-custom { background-color: var(--primary-color) !important; }
+        .section-padding { padding: 80px 0; }
+        .img-cover { object-fit: cover; width: 100%; height: 100%; }
+
+        /* --- NAVBAR & FOOTER (MATCHING INDEX) --- */
+        .navbar { padding: 20px 0; background: var(--primary-color); transition: all 0.3s ease; }
+        .navbar-brand { font-family: var(--font-heading); font-weight: 700; color: white !important; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        .nav-link { color: rgba(255,255,255,0.8) !important; font-weight: 500; margin: 0 10px; }
+        .nav-link:hover, .nav-link.active { color: white !important; }
+        .btn-nav-contact { background: black; color: white; border-radius: 30px; padding: 8px 24px; }
+        
+        footer { background: black; color: white; padding: 80px 0 40px; }
+        footer h5 { color: white; margin-bottom: 20px; font-size: 1.2rem; }
+        footer a { color: #999; display: block; margin-bottom: 10px; font-size: 0.95rem; }
+        footer a:hover { color: var(--primary-color); padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid #333; padding-top: 30px; margin-top: 50px; text-align: center; color: #666; font-size: 0.85rem; }
+
+        /* --- GALLERY SPECIFIC STYLES --- */
+        .page-header {
+            background-color: var(--bg-light);
+            padding: 60px 0;
+            text-align: center;
+        }
+        .breadcrumb-item a { color: var(--primary-color); }
+        
+        /* Filter Tabs */
+        .gallery-filter .nav-link {
+            color: var(--text-light) !important;
+            border-radius: 30px;
+            padding: 8px 25px;
+            margin: 0 5px;
+            font-weight: 500;
+            background: white;
+            border: 1px solid #eee;
+        }
+        .gallery-filter .nav-link.active {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+            border-color: var(--primary-color);
+        }
+
+        /* Gallery Item */
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            margin-bottom: 24px;
+            cursor: pointer;
+            height: 300px; /* Fixed height for consistency */
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Video Section */
+        .video-cta {
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            height: 400px;
+        }
+        .play-btn {
+            width: 80px; height: 80px;
+            background: white;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            transition: 0.3s;
+            cursor: pointer;
+            box-shadow: 0 0 0 10px rgba(255,255,255,0.3);
+        }
+        .play-btn:hover { transform: translate(-50%, -50%) scale(1.1); }
+
+        /* --- FAB (MATCHING INDEX) --- */
+        .fab-container { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
+        .fab-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-size: 1.2rem; cursor: pointer; transition: transform 0.3s; }
+        .fab-btn:hover { transform: scale(1.1); }
+        .fab-wa { background-color: #25D366; }
+        .fab-top { background-color: var(--secondary-color); display: none; }
+    </style>
+</head>
+<body>
+
+        <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fa-solid fa-circle-notch"></i> AIRSPACE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Shop
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow-lg" aria-labelledby="shopDropdown">
+                            <li><a class="dropdown-item py-2" href="paket1.html">Classic Victorian</a></li>
+                            <li><a class="dropdown-item py-2" href="paket2.html">Modern Minimalist</a></li>
+                            <li><a class="dropdown-item py-2" href="paket3.html">Luxury Penthouse</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+                </ul>
+            </div>
+            <div class="d-none d-lg-block">
+                <a href="#contact" class="btn-nav-contact">Contact <i class="fa-regular fa-envelope ms-2"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="display-4">Our Portfolio</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            
+            <div class="text-center mb-5">
+                <ul class="nav nav-pills justify-content-center gallery-filter" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-all-tab" data-bs-toggle="pill" data-bs-target="#pills-all" type="button" role="tab">All Projects</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-interior-tab" data-bs-toggle="pill" data-bs-target="#pills-interior" type="button" role="tab">Interior</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-exterior-tab" data-bs-toggle="pill" data-bs-target="#pills-exterior" type="button" role="tab">Exterior</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-content" id="pills-tabContent">
+                
+                <div class="tab-pane fade show active" id="pills-all" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop" alt="Modern Minimalist Living Room Interior">
+                                <div class="gallery-overlay">
+                                    <h5 class="mb-0">Urban Living Room</h5>
+                                    <small>Interior Design</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1600596542815-bfad4c1539a9?q=80&w=800&auto=format&fit=crop" alt="Luxury House Exterior with Pool" loading="lazy">
+                                <div class="gallery-overlay">
+                                    <h5 class="mb-0">The Grand Villa</h5>
+                                    <small>Exterior & Landscape</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=800&auto=format&fit=crop" alt="Modern Kitchen Set Design" loading="lazy">
+                                <div class="gallery-overlay">
+                                    <h5 class="mb-0">Scandinavian Kitchen</h5>
+                                    <small>Interior Design</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop" alt="Modern White House Architecture" loading="lazy">
+                                <div class="gallery-overlay">
+                                    <h5 class="mb-0">White Cube House</h5>
+                                    <small>Architecture</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?q=80&w=800&auto=format&fit=crop" alt="Cozy Bedroom Setup" loading="lazy">
+                                <div class="gallery-overlay">
+                                    <h5 class="mb-0">Warm Bedroom</h5>
+                                    <small>Interior Design</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=800&auto=format&fit=crop" alt="Luxury Bathroom Marble" loading="lazy">
+                                <div class="gallery-overlay">
+                                    <h5 class="mb-0">Marble Bathroom</h5>
+                                    <small>Interior Design</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-5">
+                        <button class="btn btn-outline-dark rounded-pill px-5 py-2">Load More Photos</button>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-interior" role="tabpanel">
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop" alt="Interior" loading="lazy">
+                                <div class="gallery-overlay"><h5 class="mb-0">Urban Living Room</h5></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=800&auto=format&fit=crop" alt="Kitchen" loading="lazy">
+                                <div class="gallery-overlay"><h5 class="mb-0">Scandinavian Kitchen</h5></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-exterior" role="tabpanel">
+                     <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1600596542815-bfad4c1539a9?q=80&w=800&auto=format&fit=crop" alt="Exterior" loading="lazy">
+                                <div class="gallery-overlay"><h5 class="mb-0">The Grand Villa</h5></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-dark">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 text-white">
+                    <span class="text-primary-custom fw-bold text-uppercase small">Virtual Tour</span>
+                    <h2 class="mt-2 mb-4">Experience Our Properties<br>Like Never Before</h2>
+                    <p class="text-white-50">Take a cinematic tour through our most exclusive listings. See the details, feel the atmosphere.</p>
+                    <a href="#contact" class="btn btn-airspace-primary rounded-pill px-4 mt-3">Book a Visit</a>
+                </div>
+                <div class="col-lg-7">
+                    <div class="video-cta">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop" alt="Video Thumbnail" class="img-cover opacity-75">
+                        <div class="play-btn">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-light">
+        <div class="container text-center">
+            <h2 class="mb-5"><i class="fa-brands fa-instagram me-2"></i> Follow @Airspace_Living</h2>
+            <div class="row g-2">
+                <div class="col-6 col-md-2">
+                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=300&auto=format&fit=crop" class="img-fluid rounded-3" alt="Insta 1" loading="lazy">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="https://images.unsplash.com/photo-1484154218962-a1c00207099b?q=80&w=300&auto=format&fit=crop" class="img-fluid rounded-3" alt="Insta 2" loading="lazy">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=300&auto=format&fit=crop" class="img-fluid rounded-3" alt="Insta 3" loading="lazy">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="https://images.unsplash.com/photo-1502005229762-cf1e2da0c504?q=80&w=300&auto=format&fit=crop" class="img-fluid rounded-3" alt="Insta 4" loading="lazy">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=300&auto=format&fit=crop" class="img-fluid rounded-3" alt="Insta 5" loading="lazy">
+                </div>
+                <div class="col-6 col-md-2">
+                    <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=300&auto=format&fit=crop" class="img-fluid rounded-3" alt="Insta 6" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <a class="navbar-brand mb-3" href="index.html">
+                        <i class="fa-solid fa-circle-notch"></i> AIRSPACE
+                    </a>
+                    <p class="text-secondary small">Our company dedicated to innovating the luxury real estate industry offers absolutely new experiences through a global network.</p>
+                </div>
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5>Home</h5>
+                    <a href="#">About Us</a>
+                    <a href="#">Properties</a>
+                    <a href="#">Agents</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5>Support</h5>
+                    <a href="#">FAQ</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Newsletter</h5>
+                    <p class="text-secondary small">Subscribe to get the latest property updates.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="Email Address">
+                        <button class="btn btn-light" type="button">Sub</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Airspace Real Estate. All Rights Reserved. Designed based on request.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fab-container">
+        <div class="fab-btn fab-top" id="backToTop" onclick="scrollToTop()">
+            <i class="fa-solid fa-arrow-up"></i>
+        </div>
+        <a href="https://wa.me/6281234567890" target="_blank" class="fab-btn fab-wa" aria-label="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Floating Button Logic (Sama Persis)
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTopBtn.style.display = "flex";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>

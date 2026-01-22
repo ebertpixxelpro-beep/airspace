@@ -315,10 +315,20 @@
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#products">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Category</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Shop
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow-lg" aria-labelledby="shopDropdown">
+                            <li><a class="dropdown-item py-2" href="paket1.html">Classic Victorian</a></li>
+                            <li><a class="dropdown-item py-2" href="paket2.html">Modern Minimalist</a></li>
+                            <li><a class="dropdown-item py-2" href="paket3.html">Luxury Penthouse</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
                 </ul>
             </div>
             <div class="d-none d-lg-block">
@@ -400,7 +410,7 @@
                             <p>Project<br>Completed</p>
                         </div>
                     </div>
-                    <a href="#" class="btn-airspace btn-nav-contact mt-4">Explore More</a>
+                    <a href="about.html" class="btn-airspace btn-nav-contact mt-4">Explore More</a>
                 </div>
                 <div class="col-lg-6 offset-lg-1">
                     <div class="row g-3 about-collage">
@@ -461,37 +471,44 @@
         </div>
     </section>
 
-    <section id="products" class="section-padding">
+<section id="products" class="section-padding">
         <div class="container">
             <div class="d-flex justify-content-between align-items-end mb-5">
                 <div>
                     <h2 class="section-title text-uppercase">Our Property</h2>
                     <p class="m-0 text-muted">This week exclusive homes from Partners.</p>
                 </div>
-                <a href="#" class="btn btn-outline-dark rounded-pill px-4">See All <i class="fa-solid fa-arrow-right ms-2"></i></a>
             </div>
 
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="property-card">
-                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=500&auto=format&fit=crop" class="property-img" alt="Luxury House">
-                    </div>
-                    <h4>Classic Victorian</h4>
-                    <p class="text-muted">$450,000 • London, UK</p>
+                    <a href="paket1.html" class="text-decoration-none text-dark d-block">
+                        <div class="property-card mb-3">
+                            <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=500&auto=format&fit=crop" class="property-img w-100 rounded-4" alt="Luxury House">
+                        </div>
+                        <h4>Classic Victorian</h4>
+                        <p class="text-muted">$450,000 • London, UK</p>
+                    </a>
                 </div>
+
                 <div class="col-md-4">
-                    <div class="property-card">
-                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=500&auto=format&fit=crop" class="property-img" alt="Modern Apartment">
-                    </div>
-                    <h4>Orange Sky Apartments</h4>
-                    <p class="text-muted">$320,000 • Berlin, Germany</p>
+                    <a href="paket2.html" class="text-decoration-none text-dark d-block">
+                        <div class="property-card mb-3">
+                            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=500&auto=format&fit=crop" class="property-img w-100 rounded-4" alt="Modern Apartment">
+                        </div>
+                        <h4>Orange Sky Apartments</h4>
+                        <p class="text-muted">$320,000 • Berlin, Germany</p>
+                    </a>
                 </div>
+
                 <div class="col-md-4">
-                    <div class="property-card">
-                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=500&auto=format&fit=crop" class="property-img" alt="Minimalist Home">
-                    </div>
-                    <h4>Red Block Complex</h4>
-                    <p class="text-muted">$510,000 • Madrid, Spain</p>
+                    <a href="paket3.html" class="text-decoration-none text-dark d-block">
+                        <div class="property-card mb-3">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=500&auto=format&fit=crop" class="property-img w-100 rounded-4" alt="Minimalist Home">
+                        </div>
+                        <h4>Red Block Complex</h4>
+                        <p class="text-muted">$510,000 • Madrid, Spain</p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -566,13 +583,14 @@
         </div>
     </section>
 
-    <section id="news" class="section-padding bg-light">
+<section id="news" class="section-padding bg-light">
         <div class="container">
             <h2 class="mb-5">Latest News</h2>
             <div class="row g-4">
-                <div class="col-md-6">
+                
+                <div class="col-md-4">
                     <div class="card border-0 h-100 bg-transparent">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=500&auto=format&fit=crop" class="card-img-top rounded-4" alt="News 1">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=500&auto=format&fit=crop" class="card-img-top rounded-4" alt="Urban City">
                         <div class="card-body px-0">
                             <small class="text-primary-custom fw-bold">TRENDS</small>
                             <h4 class="card-title mt-2">The Future of Urban Living</h4>
@@ -580,9 +598,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+
+                <div class="col-md-4">
                     <div class="card border-0 h-100 bg-transparent">
-                        <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?q=80&w=500&auto=format&fit=crop" class="card-img-top rounded-4" alt="News 2">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=500&auto=format&fit=crop" class="card-img-top rounded-4" alt="Home Keys">
                         <div class="card-body px-0">
                             <small class="text-primary-custom fw-bold">TIPS</small>
                             <h4 class="card-title mt-2">5 Tips for First-Time Home Buyers</h4>
@@ -590,23 +609,69 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-4">
+                    <div class="card border-0 h-100 bg-transparent">
+                        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=500&auto=format&fit=crop" class="card-img-top rounded-4" alt="Minimalist Apartment">
+                        <div class="card-body px-0">
+                            <small class="text-primary-custom fw-bold">LIFESTYLE</small>
+                            <h4 class="card-title mt-2">Why Minimalist Apartments Are the Best Choice in 2024</h4>
+                            <a href="#" class="text-dark fw-bold text-decoration-underline">Read Article</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section-padding">
+<section id="booking" class="section-padding">
         <div class="container">
-            <div class="row bg-dark text-white rounded-5 overflow-hidden">
-                <div class="col-lg-6 p-5 d-flex flex-column justify-content-center">
-                    <h2 class="text-white mb-4">Find All the information to connect with us.</h2>
-                    <ul class="list-unstyled">
-                        <li class="mb-3"><strong class="d-block text-white-50 small text-uppercase">Agent</strong> See who's the best agent right now.</li>
-                        <li class="mb-3"><strong class="d-block text-white-50 small text-uppercase">Services</strong> Know about us which services we provide.</li>
-                        <li class="mb-3"><strong class="d-block text-white-50 small text-uppercase">Offers</strong> Find The Best Offer here and Book.</li>
-                    </ul>
+            <div class="row bg-dark text-white rounded-5 overflow-hidden shadow-lg">
+                <div class="col-lg-6 p-5">
+                    <h2 class="text-white mb-2">Book a Viewing</h2>
+                    <p class="text-white-50 mb-4">Ready to see your future home? Schedule a visit with our experts today.</p>
+                    
+                    <form action="#" method="POST">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="inputName" class="form-label small text-uppercase fw-bold text-white-50">Full Name</label>
+                                <input type="text" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputName" placeholder="John Doe" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputPhone" class="form-label small text-uppercase fw-bold text-white-50">Phone Number</label>
+                                <input type="tel" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputPhone" placeholder="+62 812..." required>
+                            </div>
+                            <div class="col-12">
+                                <label for="inputEmail" class="form-label small text-uppercase fw-bold text-white-50">Email Address</label>
+                                <input type="email" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputEmail" placeholder="name@example.com" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputDate" class="form-label small text-uppercase fw-bold text-white-50">Preferred Date</label>
+                                <input type="date" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputDate" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputType" class="form-label small text-uppercase fw-bold text-white-50">Property Interest</label>
+                                <select id="inputType" class="form-select bg-secondary bg-opacity-25 border-0 text-white py-2">
+                                    <option selected class="text-dark">Luxury Villa</option>
+                                    <option value="1" class="text-dark">Urban Apartment</option>
+                                    <option value="2" class="text-dark">Minimalist House</option>
+                                </select>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-light w-100 rounded-pill fw-bold py-3 text-uppercase">
+                                    Confirm Booking <i class="fa-solid fa-arrow-right ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-lg-6 p-0">
-                    <img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=500&auto=format&fit=crop" class="img-cover" alt="Building Low Angle">
+                
+                <div class="col-lg-6 p-0 d-none d-lg-block position-relative">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" class="img-cover" alt="Luxury Interior Hallway">
+                    <div class="position-absolute bottom-0 start-0 p-5 bg-gradient-to-t">
+                        <p class="mb-0 text-white small"><i class="fa-solid fa-quote-left me-2"></i> We handle the paperwork, you get the keys.</p>
+                    </div>
                 </div>
             </div>
         </div>

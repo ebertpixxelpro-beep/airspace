@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Our Team & Journey | Airspace Real Estate</title>
+    <meta name="description" content="Mengenal tim ahli di balik Airspace. Dedikasi kami dalam menghubungkan Anda dengan properti impian melalui proses outbound yang transparan dan profesional.">
+    <meta name="keywords" content="tim airspace, agen properti, tentang airspace, real estate agent, visi misi properti">
+    <meta name="author" content="Airspace Developer">
+    <meta name="theme-color" content="#E6553B">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Our Team & Journey | Airspace">
+    <meta property="og:description" content="Kenalan dengan tim expert kami yang siap membantu Anda menemukan hunian impian.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/E6553B/ffffff?text=Airspace+Team">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32x32/E6553B/ffffff?text=A">
+    <link rel="apple-touch-icon" href="https://via.placeholder.com/180x180/E6553B/ffffff?text=A">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CORE VARIABLES (MATCHING INDEX) --- */
+        :root {
+            --primary-color: #E6553B;
+            --secondary-color: #1A1A1A;
+            --text-dark: #111111;
+            --text-light: #666666;
+            --bg-light: #F9F9F9;
+            --white: #ffffff;
+            --font-heading: 'Jost', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --border-radius-lg: 16px;
+            --border-radius-sm: 8px;
+        }
+
+        body { font-family: var(--font-body); color: var(--text-dark); overflow-x: hidden; line-height: 1.6; }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; color: var(--text-dark); }
+        a { text-decoration: none; transition: 0.3s; }
+        .text-primary-custom { color: var(--primary-color) !important; }
+        .bg-primary-custom { background-color: var(--primary-color) !important; }
+        .section-padding { padding: 80px 0; }
+        .img-cover { object-fit: cover; width: 100%; height: 100%; }
+
+        /* --- NAVBAR & FOOTER (MATCHING INDEX) --- */
+        .navbar { padding: 20px 0; background: var(--primary-color); transition: all 0.3s ease; }
+        .navbar-brand { font-family: var(--font-heading); font-weight: 700; color: white !important; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        .nav-link { color: rgba(255,255,255,0.8) !important; font-weight: 500; margin: 0 10px; }
+        .nav-link:hover, .nav-link.active { color: white !important; }
+        .btn-nav-contact { background: black; color: white; border-radius: 30px; padding: 8px 24px; }
+        
+        footer { background: black; color: white; padding: 80px 0 40px; }
+        footer h5 { color: white; margin-bottom: 20px; font-size: 1.2rem; }
+        footer a { color: #999; display: block; margin-bottom: 10px; font-size: 0.95rem; }
+        footer a:hover { color: var(--primary-color); padding-left: 5px; }
+        .footer-bottom { border-top: 1px solid #333; padding-top: 30px; margin-top: 50px; text-align: center; color: #666; font-size: 0.85rem; }
+
+        /* --- OUTBOUND PAGE SPECIFIC CSS --- */
+        .page-header {
+            background-color: var(--bg-light);
+            padding: 60px 0;
+            text-align: center;
+        }
+        .breadcrumb-item a { color: var(--primary-color); }
+        
+        /* Team Card */
+        .team-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .team-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .team-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .social-icons a {
+            width: 35px; height: 35px;
+            background: #eee; color: #333;
+            border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center;
+            margin: 0 5px;
+            font-size: 0.9rem;
+        }
+        .social-icons a:hover { background: var(--primary-color); color: white; }
+
+        /* Process Steps */
+        .process-step {
+            position: relative;
+            padding: 30px;
+            background: white;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius-sm);
+            height: 100%;
+        }
+        .step-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: rgba(230, 85, 59, 0.1); /* Transparent Primary */
+            position: absolute;
+            top: 10px; right: 20px;
+        }
+
+        /* --- FAB (MATCHING INDEX) --- */
+        .fab-container { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
+        .fab-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-size: 1.2rem; cursor: pointer; transition: transform 0.3s; }
+        .fab-btn:hover { transform: scale(1.1); }
+        .fab-wa { background-color: #25D366; }
+        .fab-top { background-color: var(--secondary-color); display: none; }
+        
+        /* Mobile Tweaks */
+        @media (max-width: 991px) {
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fa-solid fa-circle-notch"></i> AIRSPACE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Shop
+                        </a>
+                        <ul class="dropdown-menu border-0 shadow-lg" aria-labelledby="shopDropdown">
+                            <li><a class="dropdown-item py-2" href="paket1.html">Classic Victorian</a></li>
+                            <li><a class="dropdown-item py-2" href="paket2.html">Modern Minimalist</a></li>
+                            <li><a class="dropdown-item py-2" href="paket3.html">Luxury Penthouse</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+                </ul>
+            </div>
+            <div class="d-none d-lg-block">
+                <a href="#contact" class="btn-nav-contact">Contact <i class="fa-regular fa-envelope ms-2"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="display-4">Our Journey & Team</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop" alt="Meeting Team" class="img-fluid rounded-4 shadow-sm" loading="lazy">
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <h5 class="text-primary-custom text-uppercase mb-3">Who We Are</h5>
+                    <h2 class="mb-4">Dedicated to Innovating the Luxury Real Estate Industry</h2>
+                    <p class="text-muted mb-4">
+                        Airspace bukan sekadar platform properti, kami adalah partner gaya hidup Anda. Sejak 2014, kami telah membantu lebih dari 10.000 keluarga menemukan tempat yang mereka sebut rumah.
+                    </p>
+                    <div class="border-start border-4 border-dark ps-4 mb-4">
+                        <p class="fst-italic mb-0">"Our mission is to make the process of buying and selling real estate as cost-effective as possible while maintaining the highest level of service."</p>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Global Network Access</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> Expert Legal Support</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary-custom me-2"></i> 24/7 Consultation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">How We Work</h2>
+                <p class="section-subtitle">A simple, transparent process to get you moving.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="process-step">
+                        <span class="step-number">01</span>
+                        <i class="fa-solid fa-comments fs-2 text-primary-custom mb-3"></i>
+                        <h5>Consultation</h5>
+                        <p class="small text-muted mb-0">Diskusi mendalam mengenai kebutuhan, budget, dan preferensi lokasi Anda.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="process-step">
+                        <span class="step-number">02</span>
+                        <i class="fa-solid fa-magnifying-glass-location fs-2 text-primary-custom mb-3"></i>
+                        <h5>Search & Select</h5>
+                        <p class="small text-muted mb-0">Tim kami mengurasi pilihan properti terbaik yang tidak ada di pasar umum.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="process-step">
+                        <span class="step-number">03</span>
+                        <i class="fa-solid fa-eye fs-2 text-primary-custom mb-3"></i>
+                        <h5>Viewing</h5>
+                        <p class="small text-muted mb-0">Kunjungan lokasi didampingi expert untuk inspeksi detail properti.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="process-step">
+                        <span class="step-number">04</span>
+                        <i class="fa-solid fa-file-signature fs-2 text-primary-custom mb-3"></i>
+                        <h5>Deal & Keys</h5>
+                        <p class="small text-muted mb-0">Kami urus legalitas dan negosiasi hingga kunci ada di tangan Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Meet Our Experts</h2>
+                <p class="section-subtitle">The people making it all happen.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3 col-sm-6">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop" alt="CEO" class="team-img" loading="lazy">
+                        <h5 class="mb-1">James Carter</h5>
+                        <p class="text-muted small">Founder & CEO</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1573496359-70142d76c220?q=80&w=400&auto=format&fit=crop" alt="Agent" class="team-img" loading="lazy">
+                        <h5 class="mb-1">Sarah Jenkins</h5>
+                        <p class="text-muted small">Senior Broker</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop" alt="Agent" class="team-img" loading="lazy">
+                        <h5 class="mb-1">Michael Ross</h5>
+                        <p class="text-muted small">Marketing Lead</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop" alt="Agent" class="team-img" loading="lazy">
+                        <h5 class="mb-1">Emily Blunt</h5>
+                        <p class="text-muted small">Legal Consultant</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 border-top">
+        <div class="container">
+            <p class="text-center text-muted text-uppercase small fw-bold mb-4">Trusted by industry leaders</p>
+            <div class="row justify-content-center align-items-center opacity-50 grayscale text-center g-4">
+                <div class="col-6 col-md-2 h3 fw-bold text-muted mb-0"><i class="fa-brands fa-airbnb me-2"></i>Airbnb</div>
+                <div class="col-6 col-md-2 h3 fw-bold text-muted mb-0"><i class="fa-brands fa-google me-2"></i>Google</div>
+                <div class="col-6 col-md-2 h3 fw-bold text-muted mb-0"><i class="fa-brands fa-amazon me-2"></i>Amazon</div>
+                <div class="col-6 col-md-2 h3 fw-bold text-muted mb-0"><i class="fa-brands fa-stripe me-2"></i>Stripe</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-primary-custom py-5 text-center text-white">
+        <div class="container">
+            <h2 class="text-white">Ready to start your journey?</h2>
+            <p class="mb-4">Contact our team today and let's find your dream home together.</p>
+            <a href="index.html#contact" class="btn btn-light rounded-pill px-5 py-3 fw-bold text-dark">Contact Us Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <a class="navbar-brand mb-3" href="index.html">
+                        <i class="fa-solid fa-circle-notch"></i> AIRSPACE
+                    </a>
+                    <p class="text-secondary small">Our company dedicated to innovating the luxury real estate industry offers absolutely new experiences through a global network.</p>
+                </div>
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5>Home</h5>
+                    <a href="#">About Us</a>
+                    <a href="#">Properties</a>
+                    <a href="#">Agents</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="col-lg-2 col-6 mb-4">
+                    <h5>Support</h5>
+                    <a href="#">FAQ</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Newsletter</h5>
+                    <p class="text-secondary small">Subscribe to get the latest property updates.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="Email Address">
+                        <button class="btn btn-light" type="button">Sub</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Airspace Real Estate. All Rights Reserved. Designed based on request.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fab-container">
+        <div class="fab-btn fab-top" id="backToTop" onclick="scrollToTop()">
+            <i class="fa-solid fa-arrow-up"></i>
+        </div>
+        <a href="https://wa.me/6281234567890" target="_blank" class="fab-btn fab-wa" aria-label="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Floating Button Logic
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTopBtn.style.display = "flex";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>
