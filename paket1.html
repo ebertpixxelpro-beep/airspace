@@ -138,9 +138,10 @@
                     <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            perperti
+                            Property
                         </a>
                         <ul class="dropdown-menu border-0 shadow-lg" aria-labelledby="shopDropdown">
+                            <li><a class="dropdown-item py-2" href="all-properties.html">All Properties</a></li>
                             <li><a class="dropdown-item py-2" href="paket1.html">Classic Victorian</a></li>
                             <li><a class="dropdown-item py-2" href="paket2.html">Modern Minimalist</a></li>
                             <li><a class="dropdown-item py-2" href="paket3.html">Luxury Penthouse</a></li>
@@ -172,7 +173,7 @@
                     <p class="text-muted mb-0"><i class="fa-solid fa-location-dot me-2"></i> 123 Oxford Street, London, UK</p>
                 </div>
                 <div>
-                    <h2 class="text-primary-custom display-6 fw-bold">$450,000</h2>
+                    <h2 class="text-primary-custom display-6 fw-bold">$400k - $500k</h2>
                 </div>
             </div>
         </div>
@@ -312,79 +313,92 @@
             </div>
         </div>
     </section>
-<section id="booking-cta" class="section-padding bg-dark text-white">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 mb-5 mb-lg-0">
-                    <span class="text-primary-custom fw-bold text-uppercase small">Secure Your Future Home</span>
-                    <h2 class="display-5 mt-2 mb-4">Ready to Make an Offer?</h2>
-                    <p class="text-white-50 mb-4">
-                        Properti "Classic Victorian" ini sangat diminati. Jika Anda serius, kami sarankan untuk segera menjadwalkan kunjungan eksklusif atau mengajukan penawaran awal.
-                    </p>
-                    
-                    <div class="d-flex align-items-start mb-3">
-                        <div class="bg-primary-custom p-3 rounded-circle me-3 text-white">
-                            <i class="fa-solid fa-phone-volume fs-4"></i>
+<section id="booking" class="section-padding">
+    <div class="container">
+        <div class="row bg-dark text-white rounded-5 overflow-hidden shadow-lg">
+            <div class="col-lg-6 p-5">
+                <h2 class="text-white mb-2">Book a Viewing</h2>
+                <p class="text-white-50 mb-4">Ready to see your future home? Schedule a visit with our experts today.</p>
+                
+                <form id="bookingForm" action="#" method="POST">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputName" class="form-label small text-uppercase fw-bold text-white-50">Full Name</label>
+                            <input type="text" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputName" placeholder="John Doe" required>
                         </div>
-                        <div>
-                            <h6 class="mb-1 text-uppercase small fw-bold">Direct Line</h6>
-                            <p class="mb-0 fs-5">+44 20 7123 4567</p>
+                        <div class="col-md-6">
+                            <label for="inputPhone" class="form-label small text-uppercase fw-bold text-white-50">Phone Number</label>
+                            <input type="tel" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputPhone" placeholder="+62 812..." required>
+                        </div>
+                        <div class="col-12">
+                            <label for="inputEmail" class="form-label small text-uppercase fw-bold text-white-50">Email Address</label>
+                            <input type="email" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputEmail" placeholder="name@example.com" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputDate" class="form-label small text-uppercase fw-bold text-white-50">Preferred Date</label>
+                            <input type="date" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputDate" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputType" class="form-label small text-uppercase fw-bold text-white-50">Property Interest</label>
+                            <select id="inputType" class="form-select bg-secondary bg-opacity-25 border-0 text-white py-2">
+                                <option selected class="text-dark">Luxury Villa</option>
+                                <option class="text-dark">Urban Apartment</option>
+                                <option class="text-dark">Minimalist House</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-light w-100 rounded-pill fw-bold py-3 text-uppercase">
+                                Confirm Booking <i class="fa-solid fa-arrow-right ms-2"></i>
+                            </button>
                         </div>
                     </div>
-                    
-                    <div class="d-flex align-items-start">
-                        <div class="bg-white p-3 rounded-circle me-3 text-dark">
-                            <i class="fa-solid fa-envelope-open-text fs-4"></i>
-                        </div>
-                        <div>
-                            <h6 class="mb-1 text-uppercase small fw-bold">Email Offers</h6>
-                            <p class="mb-0 fs-5">sales@airspace.com</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 offset-lg-1">
-                    <div class="bg-white text-dark p-5 rounded-4 shadow-lg">
-                        <h3 class="mb-4">Schedule a Private Viewing</h3>
-                                         <form action="#" method="POST">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="inputName" class="form-label small text-uppercase fw-bold text-white-50">Full Name</label>
-                                <input type="text" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputName" placeholder="John Doe" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputPhone" class="form-label small text-uppercase fw-bold text-white-50">Phone Number</label>
-                                <input type="tel" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputPhone" placeholder="+62 812..." required>
-                            </div>
-                            <div class="col-12">
-                                <label for="inputEmail" class="form-label small text-uppercase fw-bold text-white-50">Email Address</label>
-                                <input type="email" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputEmail" placeholder="name@example.com" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputDate" class="form-label small text-uppercase fw-bold text-white-50">Preferred Date</label>
-                                <input type="date" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputDate" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputType" class="form-label small text-uppercase fw-bold text-white-50">Property Interest</label>
-                                <select id="inputType" class="form-select bg-secondary bg-opacity-25 border-0 text-white py-2">
-                                    <option selected class="text-dark">Luxury Villa</option>
-                                    <option value="1" class="text-dark">Urban Apartment</option>
-                                    <option value="2" class="text-dark">Minimalist House</option>
-                                </select>
-                            </div>
-                            <div class="col-12 mt-4">
-                                <button type="submit" class="btn btn-light w-100 rounded-pill fw-bold py-3 text-uppercase">
-                                    Confirm Booking <i class="fa-solid fa-arrow-right ms-2"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    </div>
+                </form>
+            </div>
+            
+            <div class="col-lg-6 p-0 d-none d-lg-block position-relative">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" class="img-cover" alt="Luxury Interior Hallway">
+                <div class="position-absolute bottom-0 start-0 p-5 bg-gradient-to-t">
+                    <p class="mb-0 text-white small"><i class="fa-solid fa-quote-left me-2"></i> We handle the paperwork, you get the keys.</p>
                 </div>
             </div>
         </div>
-    </section>
-    <footer>
+    </div>
+</section>
+
+<script>
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Mencegah halaman refresh
+
+        // 1. Masukkan Nomor WhatsApp Admin di sini (Gunakan kode negara, tanpa +)
+        const adminPhone = "6281234567890"; 
+
+        // 2. Ambil data dari formulir
+        const name = document.getElementById('inputName').value;
+        const phone = document.getElementById('inputPhone').value;
+        const email = document.getElementById('inputEmail').value;
+        const date = document.getElementById('inputDate').value;
+        const type = document.getElementById('inputType').value;
+
+        // 3. Susun pesan yang akan dikirim
+        const message = `Halo Admin Airspace, saya ingin *Book a Viewing*.\n\n` +
+                        `📋 *Detail Peminat:*\n` +
+                        `Nama: ${name}\n` +
+                        `No HP: ${phone}\n` +
+                        `Email: ${email}\n\n` +
+                        `📅 *Rencana Survey:*\n` +
+                        `Tanggal: ${date}\n` +
+                        `Minat Properti: ${type}\n\n` +
+                        `Mohon informasinya lebih lanjut. Terima kasih!`;
+
+        // 4. Buat Link WhatsApp
+        const whatsappURL = `https://wa.me/${adminPhone}?text=${encodeURIComponent(message)}`;
+
+        // 5. Buka WhatsApp di tab baru
+        window.open(whatsappURL, '_blank');
+    });
+</script>     
+
+<footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
@@ -394,14 +408,15 @@
                     <p class="text-secondary small">Our company dedicated to innovating the luxury real estate industry offers absolutely new experiences through a global network.</p>
                 </div>
                 <div class="col-lg-2 col-6 mb-4">
-                    <h5>Home</h5>
+                    <h5>Navbar</h5>
                     <a href="index.html">Home</a>
                     <a href="about.html">About Usa</a>
                     <a href="galeri.html">Galeri</a>
                     <a href="blog.html">Blog</a>
                 </div>
                 <div class="col-lg-2 col-6 mb-4">
-                    <h5>perperti</h5>
+                    <h5>Property</h5>
+                    <a href="all-properties.html">All Properties</a>
                     <a href="paket1.html">Classic Victorian</a>
                     <a href="paket2.html">Orange Sky Apartments</a>
                     <a href="paket3.html">Red Block Complex</a>

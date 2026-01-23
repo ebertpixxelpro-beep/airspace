@@ -318,9 +318,10 @@
                     <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            perperti
+                            Property
                         </a>
                         <ul class="dropdown-menu border-0 shadow-lg" aria-labelledby="shopDropdown">
+                            <li><a class="dropdown-item py-2" href="all-properties.html">All Properties</a></li>
                             <li><a class="dropdown-item py-2" href="paket1.html">Classic Victorian</a></li>
                             <li><a class="dropdown-item py-2" href="paket2.html">Modern Minimalist</a></li>
                             <li><a class="dropdown-item py-2" href="paket3.html">Luxury Penthouse</a></li>
@@ -362,31 +363,104 @@
         </div>
     </section>
 
-    <div class="search-wrapper">
-        <div class="container">
-            <div class="search-container">
-                <div class="search-item border-end px-2">
-                    <span class="search-label"><i class="fa-solid fa-location-dot me-2 text-muted"></i> Location</span>
-                    <input type="text" class="search-input" placeholder="Enter Your City Name">
-                </div>
-                <div class="search-item border-end px-2">
-                    <span class="search-label"><i class="fa-solid fa-house me-2 text-muted"></i> Type</span>
-                    <select class="search-input bg-white border-0 p-0" aria-label="Property Type">
-                        <option selected>Urban & Minimalist</option>
-                        <option value="1">Luxury Villa</option>
-                        <option value="2">Apartment</option>
-                    </select>
-                </div>
-                <div class="search-item px-2">
-                    <span class="search-label"><i class="fa-solid fa-dollar-sign me-2 text-muted"></i> Range</span>
-                    <input type="text" class="search-input" placeholder="$14,000 - $20,000">
-                </div>
-                <a href="#products" class="search-btn" aria-label="Search Properties">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </a>
+
+<style>
+    /* Agar kolom otomatis terlihat seperti 'mati' tapi teksnya jelas */
+    .locked-field {
+        background-color: #e9ecef !important; /* Abu-abu */
+        color: #000 !important; /* Teks Hitam */
+        pointer-events: none; /* Tidak bisa diklik */
+        cursor: not-allowed;
+        font-weight: bold;
+    }
+</style>
+
+<div class="search-wrapper">
+    <div class="container">
+        <div class="search-container">
+            
+            <div class="search-item border-end px-2">
+                <span class="search-label"><i class="fa-solid fa-house me-2 text-muted"></i> Property Type</span>
+                <select id="pilihType" class="search-input bg-white border-0 p-0" onchange="cekData()">
+                    <option value="" selected disabled>Pilih Tipe...</option>
+                    <option value="paket1.html">Classic Victorian</option>
+                    <option value="paket2.html">Orange Sky Apartment</option>
+                    <option value="paket3.html">Red Block Complex</option>
+                </select>
             </div>
+
+            <div class="search-item border-end px-2">
+                <span class="search-label"><i class="fa-solid fa-location-dot me-2 text-muted"></i> Location</span>
+                <select id="hasilLokasi" class="search-input border-0 p-0 locked-field" tabindex="-1">
+                    <option>Auto-detect...</option>
+                </select>
+            </div>
+
+            <div class="search-item px-2">
+                <span class="search-label"><i class="fa-solid fa-dollar-sign me-2 text-muted"></i> Price Range</span>
+                <select id="hasilHarga" class="search-input border-0 p-0 locked-field" tabindex="-1">
+                    <option>Auto-calc...</option>
+                </select>
+            </div>
+
+            <a href="javascript:void(0);" onclick="bukaHalaman()" class="search-btn" aria-label="Search Properties">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+
         </div>
     </div>
+</div>
+
+<script>
+    // DATABASE: Mencocokkan File Paket dengan Lokasi & Harga
+    const databaseProperti = {
+        "paket1.html": {
+            lokasi: "London, UK",
+            harga: "$400k - $500k" // Harga Asli: $450,000
+        },
+        "paket2.html": {
+            lokasi: "Berlin, Germany",
+            harga: "$300k - $400k" // Harga Asli: $320,000
+        },
+        "paket3.html": {
+            lokasi: "Madrid, Spain",
+            harga: "$500k +"        // Harga Asli: $510,000
+        }
+    };
+
+    // Fungsi 1: Dipanggil saat user memilih Tipe
+    function cekData() {
+        // Ambil elemen HTML
+        var inputUser = document.getElementById("pilihType").value;
+        var kolomLokasi = document.getElementById("hasilLokasi");
+        var kolomHarga = document.getElementById("hasilHarga");
+
+        // Cek apakah data ada di database?
+        if (databaseProperti[inputUser]) {
+            // Ambil datanya
+            var data = databaseProperti[inputUser];
+
+            // Isi kolom Lokasi & Harga
+            kolomLokasi.innerHTML = "<option>" + data.lokasi + "</option>";
+            kolomHarga.innerHTML = "<option>" + data.harga + "</option>";
+        }
+    }
+
+    // Fungsi 2: Dipanggil saat tombol Search diklik
+    function bukaHalaman() {
+        var tujuan = document.getElementById("pilihType").value;
+
+        if (tujuan) {
+            // Buka halaman paket
+            window.location.href = tujuan;
+        } else {
+            // Kalau user belum pilih apa-apa
+            alert("Harap pilih Tipe Properti terlebih dahulu!");
+        }
+    }
+</script>
+
+
 
     <section id="about" class="section-padding">
         <div class="container">
@@ -624,59 +698,36 @@
             </div>
         </div>
     </section>
+    <script>
+        function goToPage() {
+            // Ambil nilai dari ketiga dropdown
+            var loc = document.getElementById("propertyLocation").value;
+            var type = document.getElementById("propertyType").value;
+            var price = document.getElementById("propertyPrice").value;
+            
+            // Logika Prioritas:
+            // Sistem akan mengecek dari kiri ke kanan.
+            // Jika user memilih Lokasi, dia akan dibawa ke link lokasi.
+            // Jika lokasi kosong tapi user memilih Tipe, dia dibawa ke link Tipe, dst.
+            
+            var targetUrl = "";
 
-<section id="booking" class="section-padding">
-        <div class="container">
-            <div class="row bg-dark text-white rounded-5 overflow-hidden shadow-lg">
-                <div class="col-lg-6 p-5">
-                    <h2 class="text-white mb-2">Book a Viewing</h2>
-                    <p class="text-white-50 mb-4">Ready to see your future home? Schedule a visit with our experts today.</p>
-                    
-                    <form action="#" method="POST">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="inputName" class="form-label small text-uppercase fw-bold text-white-50">Full Name</label>
-                                <input type="text" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputName" placeholder="John Doe" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputPhone" class="form-label small text-uppercase fw-bold text-white-50">Phone Number</label>
-                                <input type="tel" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputPhone" placeholder="+62 812..." required>
-                            </div>
-                            <div class="col-12">
-                                <label for="inputEmail" class="form-label small text-uppercase fw-bold text-white-50">Email Address</label>
-                                <input type="email" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputEmail" placeholder="name@example.com" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputDate" class="form-label small text-uppercase fw-bold text-white-50">Preferred Date</label>
-                                <input type="date" class="form-control bg-secondary bg-opacity-25 border-0 text-white py-2" id="inputDate" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="inputType" class="form-label small text-uppercase fw-bold text-white-50">Property Interest</label>
-                                <select id="inputType" class="form-select bg-secondary bg-opacity-25 border-0 text-white py-2">
-                                    <option selected class="text-dark">Luxury Villa</option>
-                                    <option value="1" class="text-dark">Urban Apartment</option>
-                                    <option value="2" class="text-dark">Minimalist House</option>
-                                </select>
-                            </div>
-                            <div class="col-12 mt-4">
-                                <button type="submit" class="btn btn-light w-100 rounded-pill fw-bold py-3 text-uppercase">
-                                    Confirm Booking <i class="fa-solid fa-arrow-right ms-2"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                
-                <div class="col-lg-6 p-0 d-none d-lg-block position-relative">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" class="img-cover" alt="Luxury Interior Hallway">
-                    <div class="position-absolute bottom-0 start-0 p-5 bg-gradient-to-t">
-                        <p class="mb-0 text-white small"><i class="fa-solid fa-quote-left me-2"></i> We handle the paperwork, you get the keys.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            if (loc !== "") {
+                targetUrl = loc;
+            } else if (type !== "") {
+                targetUrl = type;
+            } else if (price !== "") {
+                targetUrl = price;
+            } else {
+                alert("Silakan pilih salah satu kriteria pencarian (Lokasi, Tipe, atau Harga).");
+                return;
+            }
 
+            // Pindah Halaman
+            window.location.href = targetUrl;
+        }
+    </script>    
+    
     <footer>
         <div class="container">
             <div class="row">
@@ -687,14 +738,15 @@
                     <p class="text-secondary small">Our company dedicated to innovating the luxury real estate industry offers absolutely new experiences through a global network.</p>
                 </div>
                 <div class="col-lg-2 col-6 mb-4">
-                    <h5>Home</h5>
+                    <h5>Navbar</h5>
                     <a href="index.html">Home</a>
                     <a href="about.html">About Usa</a>
                     <a href="galeri.html">Galeri</a>
                     <a href="blog.html">Blog</a>
                 </div>
                 <div class="col-lg-2 col-6 mb-4">
-                    <h5>perperti</h5>
+                    <h5>Property</h5>
+                    <a href="all-properties.html">All Properties</a>
                     <a href="paket1.html">Classic Victorian</a>
                     <a href="paket2.html">Orange Sky Apartments</a>
                     <a href="paket3.html">Red Block Complex</a>
